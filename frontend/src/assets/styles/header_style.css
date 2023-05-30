@@ -1,0 +1,22 @@
+@import url('https://fonts.googleapis.com/css2?family=Karla:wght@500&display=swap');
+
+.navbar {
+    background-color: #F8F8FF;
+    font-family: 'Karla', sans-serif;
+}
+
+.navbar-logo {
+    height: 10rem;
+}
+
+.navbar-item {
+    color: black;
+    text-transform: uppercase;
+    transition: 1s ease;
+}
+
+.navbar-item:hover {
+    color: orangered;
+    transition: 1s ease;
+    letter-spacing: 1px;
+}
