@@ -22,7 +22,7 @@ const productos = [
     brand: 'Industria Nacional',
     category: 'Mates',
     price: 6800,
-    countInStock: 7,
+    countInStock: 0,
     rating: 3.8,
     numReviews: 9,
 }, 

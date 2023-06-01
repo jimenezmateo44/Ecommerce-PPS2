@@ -40,3 +40,15 @@ main {
   text-overflow: ellipsis;
   white-space: nowrap;
 }
+
+.btn-addCarrito {
+  background-color: #8FBC8F;
+  border: none;
+  transition: 1s ease;
+  
+}
+
+.btn-addCarrito:hover {
+  background-color: #90EE90;
+  transition: 1s ease;
+}
