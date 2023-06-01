@@ -24,7 +24,7 @@ const productos = [
     price: 6800,
     countInStock: 7,
     rating: 3.8,
-    numReviews: 0,
+    numReviews: 9,
 }, 
 {
     _id: '3',
@@ -36,7 +36,7 @@ const productos = [
     category: 'Yerbas',
     price: 2400,
     countInStock: 50 ,
-    rating: 5,
+    rating: 0,
     numReviews: 0,
 }, 
 {
@@ -62,7 +62,7 @@ const productos = [
     category: 'Bombillas',
     price: 3600,
     countInStock: 24,
-    rating: 4 ,
+    rating: 0,
     numReviews:0 ,
 }, 
 ]

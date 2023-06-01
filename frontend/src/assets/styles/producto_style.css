@@ -1,0 +1,9 @@
+.nombreProductos {
+    color: black;
+    transition: 1s ease;
+}
+
+.nombreProductos:hover {
+    color:orangered;
+    transition: 1s ease;
+}

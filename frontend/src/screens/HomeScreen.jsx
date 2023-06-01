@@ -6,7 +6,7 @@ import React from 'react'
 const HomeScreen = () => {
   return (
 <>
-<h1 className='text-center'>Ultimos lanzamientos</h1>
+<h1 className='text-center mt-5'>Ultimos lanzamientos</h1>
    <Row>
      {productos.map((productos) => (
         <Col key={productos._id} sm={12} md={6} lg={4} xl={3}>

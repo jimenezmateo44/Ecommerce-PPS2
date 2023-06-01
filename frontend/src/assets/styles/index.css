@@ -19,3 +19,24 @@ code {
 main {
   min-height: 80vh;
 }
+
+.rating span {
+  margin: 0.1 rem;
+}
+
+.rating svg {
+  color: orangered;
+}
+
+.rating-text {
+  font-size: 0.8rem;
+  font-weight: 600;
+  padding-left: 0.5rem;
+}
+
+.titulo-producto {
+  height: 2.5rem;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
