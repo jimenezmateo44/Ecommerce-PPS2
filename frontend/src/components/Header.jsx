@@ -1,5 +1,5 @@
 import { Navbar, Nav, Container, Button ,Form } from 'react-bootstrap';
-import { FaShoppingCart, FaUser } from 'react-icons/fa';
+import { FaShoppingCart, FaUser, FaSearch } from 'react-icons/fa';
 import logo from "../assets/logo.png";
 import '../assets/styles/header_style.css';
 import { LinkContainer } from 'react-router-bootstrap';
@@ -34,9 +34,7 @@ const Header = () => {
                                 className="me-2 rounded"
                                 aria-label="Search"
                             />
-                            <Button className="rounded-pill" variant="outline-secondary">
-                             Buscar
-                            </Button>
+                            <a href='#' className='btn-buscar'><FaSearch /></a>
                         </Form>
                     </Nav>
                 </Navbar.Collapse>

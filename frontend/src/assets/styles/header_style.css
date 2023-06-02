@@ -20,3 +20,15 @@
     transition: 1s ease;
     letter-spacing: 1px;
 }
+
+.btn-buscar {
+    color: black;
+    font-size: 1.5rem;
+    transition: 1s ease;
+}
+
+.btn-buscar:hover {
+    color: orangered;
+    transition: 1s ease;
+    transform: translateY(-3px);
+}

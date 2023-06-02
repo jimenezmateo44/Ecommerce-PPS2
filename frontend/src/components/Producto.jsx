@@ -21,10 +21,9 @@ const Producto = ({productos}) => {
                 <Rating value={productos.rating} text={`${productos.numReviews} reviews`}/>
             </Card.Text>
 
-            <Card.Text as="h3">
+            <Card.Text as="h3" className='d-flex justify-content-center mt-4'>
                 ${productos.price}
             </Card.Text>
-
 
         </Card.Body>
     </Card>
