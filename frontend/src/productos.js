@@ -36,7 +36,7 @@ const productos = [
     category: 'Yerbas',
     price: 2400,
     countInStock: 50 ,
-    rating: 0,
+    rating: 3,
     numReviews: 0,
 }, 
 {
