@@ -37,10 +37,10 @@ const ProductScreen = () => {
         </Col>
 
         <Col md={3}>
-            <Card>
+            <Card className="p-3">
                 <ListGroup variant='flush'>
                     <Row>
-                        <Col>
+                        <Col className='pb-3'>
                           Precio:
                         </Col>
 
@@ -51,7 +51,7 @@ const ProductScreen = () => {
                 </ListGroup>
 
                 <ListGroup variant='flush'>
-                    <Row>
+                    <Row  className='pb-3 mt-3'>
                         <Col>
                           Disponibilidad:
                         </Col>
@@ -62,8 +62,8 @@ const ProductScreen = () => {
                     </Row>
                 </ListGroup>
                   
-                <ListGroup.Item>
-                    <Button className="btn-addCarrito btn-secondary"
+                <ListGroup.Item className='d-flex justify-content-center mt-3'>
+                    <Button className="btn-addCarrito btn-secondary "
                             type='button'
                             disabled={product.countInStock ===0}
                     >
