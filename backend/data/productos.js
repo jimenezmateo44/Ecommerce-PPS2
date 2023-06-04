@@ -1,7 +1,6 @@
 /* Provisorio */
 const productos = [
 {
-    _id: '1',
     name: 'Mate Imperial Alpaca',
     image: '/images/image-1.jpg',
     description:
@@ -14,7 +13,6 @@ const productos = [
     numReviews: 8,
 }, 
 {
-    _id: '2',
     name: 'Mate Eco Cuero',
     image: '/images/image-2.jpg',
     description:
@@ -27,7 +25,6 @@ const productos = [
     numReviews: 9,
 }, 
 {
-    _id: '3',
     name: 'Yerba Canarias Tradicional',
     image: '/images/image-3.jpg',
     description:
@@ -40,7 +37,6 @@ const productos = [
     numReviews: 0,
 }, 
 {
-    _id: '4',
     name: 'Yerba Rei Verde Tradicional',
     image: '/images/image-4.jpg',
     description:
@@ -53,7 +49,6 @@ const productos = [
     numReviews: 3,
 }, 
 {
-    _id: '5',
     name: 'Bombilla Alpaca',
     image: '/images/image-5.jpg',
     description:
