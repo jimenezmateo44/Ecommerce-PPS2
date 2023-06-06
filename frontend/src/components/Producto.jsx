@@ -11,7 +11,7 @@ const Producto = ({productos}) => {
             <Card.Img src={productos.image} variant="top"/>
         </Link>
         <Card.Body>
-            <Link to={`/productos/${productos._id}`}>
+            <Link to={`/productos/${productos._id}`} className="link-productos">
                 <Card.Title as="div" className="titulo-producto">
                     <strong className="nombreProductos">{productos.name}</strong>
                 </Card.Title>
@@ -21,7 +21,7 @@ const Producto = ({productos}) => {
                 <Rating value={productos.rating} text={`${productos.numReviews} reviews`}/>
             </Card.Text>
 
-            <Card.Text as="h3" className='d-flex justify-content-center mt-4'>
+            <Card.Text as="h3" className='h3_precio d-flex justify-content-center mt-4'>
                 ${productos.price}
             </Card.Text>
 

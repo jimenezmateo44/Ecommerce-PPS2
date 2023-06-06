@@ -7,3 +7,18 @@
     color:orangered;
     transition: 1s ease;
 }
+
+.link-productos {
+    text-decoration: none;
+    text-align: center;
+}
+
+.h3_precio {
+    transition: .5s ease;
+}
+
+.h3_precio:hover {
+    cursor:pointer;
+    color: orangered;
+    transition: .5s ease;
+}
