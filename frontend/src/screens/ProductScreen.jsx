@@ -1,47 +1,44 @@
 import React from 'react'
-import { useState, useEffect } from 'react';
-import { useParams } from 'react-router-dom';
+import { useGetProductsDetailsQuery } from '../slices/productsApiSlice';
+import Loader from './Loader';
+import Message from './Message';
 import { Row, Col, Image, ListGroup, Card, Button, ListGroupItem } from 'react-bootstrap';
-import { Link } from 'react-router-dom';
+import { Link, useParams } from 'react-router-dom';
 import Rating from '../components/Rating';
 import '../assets/styles/index.css'
-import axios from 'axios';
 
 const ProductScreen = () => {
-  const [product, setProduct] = useState({});
+  const { id: productoId } = useParams();
+  const { data: productos, isLoading, error } = useGetProductsDetailsQuery(productoId);
 
-    const { id: productId } = useParams(); 
-    
-    useEffect(() => {
-      const fetchProduct = async () => {
-        const { data } = await axios.get(`/api/productos/${productId}`);
-        setProduct(data);
-      }
-      
-      fetchProduct();
-    }, [productId]);
-  return <>
-      <Link className='btn btn-light my-3' to='/'>
-        Volver
-      </Link>
-      <Row>
+  return (
+<>
+  <Link className='btn btn-light my-3' to='/'>
+    Volver
+  </Link>
+      { isLoading ? (
+        <Loader />
+      ) : error ? (
+        <Message variant='danger'>{ error?.data?.message || error.error }</Message>
+      ) : (
+        <Row>
         <Col md={5}>
-          <Image src={product.image} alt={product.name} fluid />
+          <Image src={productos.image} alt={productos.name} fluid />
         </Col>
         
         <Col md={4}>
             <ListGroup variant='flush'>
                   <ListGroup.Item>
-                    <h3>{product.name}</h3>
+                    <h3>{productos.name}</h3>
                   </ListGroup.Item>
 
                   <ListGroup.Item>
-                    <Rating value={product.rating} text={`${product.numReviews} reviews`}/>
+                    <Rating value={productos.rating} text={`${productos.numReviews} reviews`}/>
                   </ListGroup.Item>
 
                   <ListGroup.Item>
                     <p>Descripcion:</p>
-                    {product.description}
+                    {productos.description}
                   </ListGroup.Item>
             </ListGroup>
         </Col>
@@ -55,7 +52,7 @@ const ProductScreen = () => {
                         </Col>
 
                         <Col>
-                          <strong>${product.price}</strong>
+                          <strong>${productos.price}</strong>
                         </Col>
                     </Row>
                 </ListGroup>
@@ -67,7 +64,7 @@ const ProductScreen = () => {
                         </Col>
 
                         <Col>
-                          <strong>{product.countInStock > 0 ? 'En stock' : 'Sin Stock'}</strong>
+                          <strong>{productos.countInStock > 0 ? 'En stock' : 'Sin Stock'}</strong>
                         </Col>
                     </Row>
                 </ListGroup>
@@ -75,7 +72,7 @@ const ProductScreen = () => {
                 <ListGroup.Item className='d-flex justify-content-center mt-3'>
                     <Button className="btn-addCarrito btn-secondary "
                             type='button'
-                            disabled={product.countInStock ===0}
+                            disabled={productos.countInStock ===0}
                     >
                       Agregar al carrito
                     </Button>
@@ -85,7 +82,10 @@ const ProductScreen = () => {
         </Col>
 
       </Row>
-    </>
-}
+      )}
+  </>
+  
+  );
+};
 
 export default ProductScreen
