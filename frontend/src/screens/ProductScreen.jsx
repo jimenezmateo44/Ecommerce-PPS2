@@ -1,15 +1,32 @@
-import React from 'react'
+import { useState } from 'react';
 import { useGetProductsDetailsQuery } from '../slices/productsApiSlice';
 import Loader from './Loader';
 import Message from './Message';
-import { Row, Col, Image, ListGroup, Card, Button, ListGroupItem } from 'react-bootstrap';
-import { Link, useParams } from 'react-router-dom';
+import { Row, Col, Image, ListGroup, Card, Button, ListGroupItem, Form } from 'react-bootstrap';
+import { useDispatch } from 'react-redux';
+import { Link, useParams, useNavigate } from 'react-router-dom';
 import Rating from '../components/Rating';
 import '../assets/styles/index.css'
+import { addToCart } from '../slices/cartSlice';
 
 const ProductScreen = () => {
   const { id: productoId } = useParams();
-  const { data: productos, isLoading, error } = useGetProductsDetailsQuery(productoId);
+
+  const dispatch = useDispatch();
+  const navigate = useNavigate();
+
+  const [qty, setQty] = useState(1);
+
+  const { data: productos,
+          isLoading,
+          error, } = useGetProductsDetailsQuery(productoId);
+
+  
+  const addToCartHandler = () => {
+      dispatch(addToCart({...productos, qty }));
+      navigate('/cart');
+  }
+        
 
   return (
 <>
@@ -68,11 +85,31 @@ const ProductScreen = () => {
                         </Col>
                     </Row>
                 </ListGroup>
+
+                {productos.countInStock > 0 && (
+                  <ListGroup.Item>
+                    <Row>
+                      <Col>Cantidad</Col>
+                      <Col>
+                        <Form.Control as='select'
+                                      value={qty}
+                                      onChange={(e) => setQty(Number(e.target.value))}>
+                          {[...Array(productos.countInStock).keys()].map((x) => (
+                            <option key={ x + 1 } value={ x + 1 }>
+                              { x + 1 }
+                            </option>
+                          ) )}
+                        </Form.Control>
+                      </Col>
+                    </Row>
+                  </ListGroup.Item>
+                )}
                   
                 <ListGroup.Item className='d-flex justify-content-center mt-3'>
                     <Button className="btn-addCarrito btn-secondary "
                             type='button'
                             disabled={productos.countInStock ===0}
+                            onClick={addToCartHandler}
                     >
                       Agregar al carrito
                     </Button>
