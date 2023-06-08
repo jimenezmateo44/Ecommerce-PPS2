@@ -59,7 +59,7 @@ const productos = [
     countInStock: 24,
     rating: 0,
     numReviews:0 ,
-}, 
+},
 ]
 
 export default productos

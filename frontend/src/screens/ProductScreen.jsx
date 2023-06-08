@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import { useGetProductsDetailsQuery } from '../slices/productsApiSlice';
 import Loader from './Loader';
-import Message from './Message';
+import Message from '../components/Message';
 import { Row, Col, Image, ListGroup, Card, Button, ListGroupItem, Form } from 'react-bootstrap';
 import { useDispatch } from 'react-redux';
 import { Link, useParams, useNavigate } from 'react-router-dom';
@@ -40,7 +40,7 @@ const ProductScreen = () => {
       ) : (
         <Row>
         <Col md={5}>
-          <Image src={productos.image} alt={productos.name} fluid />
+          <Image src={productos.image} alt={productos.name} fluid className='imgProduct' />
         </Col>
         
         <Col md={4}>
@@ -88,7 +88,7 @@ const ProductScreen = () => {
 
                 {productos.countInStock > 0 && (
                   <ListGroup.Item>
-                    <Row>
+                    <Row className='pb-3 mt-3'>
                       <Col>Cantidad</Col>
                       <Col>
                         <Form.Control as='select'

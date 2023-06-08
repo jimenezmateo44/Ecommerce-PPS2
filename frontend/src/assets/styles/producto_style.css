@@ -22,3 +22,13 @@
     color: orangered;
     transition: .5s ease;
 }
+
+.imgProduct {
+    margin-left: 3.5rem;
+    margin-top: 2rem;
+    height: 80%
+}
+
+.imgProduct:hover {
+    cursor: pointer;
+}
