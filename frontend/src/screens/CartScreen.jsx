@@ -33,7 +33,7 @@ const CartScreen = () => {
   return (
     <Row> {/*Si el carrito esta vacio*/}
         <Col md={8}>
-            <h1 style={{marginBottom: '20px'}}>Carrito de compras</h1>
+            <h1 style={{marginBottom: '20px', marginTop: '20px'}}>Carrito de compras</h1>
             { cartItems.length === 0 ? (
                 <Message>
                     Carrito vacio <Link to='/'>Volver</Link>
@@ -47,7 +47,7 @@ const CartScreen = () => {
                                     <Image src={item.image} alt={item.name} fluid rounded />
                                 </Col>
                                 <Col md={3}> {/*Mostramos el nombre del producto*/}
-                                    <Link to={`/productos/${item._id}`}>{item.name}</Link>
+                                    <Link to={`/productos/${item._id}`} className="link-productos nombreProductos">{item.name}</Link>
                                 </Col>
                                 <Col md={2}> {/*Mostramos el precio*/}
                                     ${item.price}
@@ -72,7 +72,7 @@ const CartScreen = () => {
                             </Row>
                         </ListGroup.Item>
                     ))}
-                <ListGroup.Item>
+                <ListGroup.Item className='m-3 d-flex justify-content-end'>
                         <Button type='button' 
                                 className='btn-block' 
                                 onClick={ keepShoppingHandler }
@@ -86,13 +86,13 @@ const CartScreen = () => {
         <Col md={4}> {/*En este col vamos a mostrar el total y boton de pago*/}
             <Card>
                 <ListGroup variant='flush'>
-                    <ListGroup.Item>
+                    <ListGroup.Item className='m-1'>
                         <h2>
                             Subtotal ({ cartItems.reduce((acc, item) => acc + item.qty, 0)} productos)
                         </h2>
                         ${ cartItems.reduce((acc, item) => acc + item.qty * item.price, 0).toFixed(2)}
                     </ListGroup.Item>
-                    <ListGroup.Item>
+                    <ListGroup.Item className='d-flex justify-content-center m-1'>
                         <Button type='button' 
                                 className='btn-block' 
                                 disabled={ cartItems.length === 0 }
