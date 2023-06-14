@@ -12,6 +12,11 @@ const port = process.env.PORT || 5000;
 connectDB(); //CONEXION A MONGODB
 const app = express();
 
+//BODY PARSER MIDDLEWARE
+app.use(express.json());
+app.use(express.urlencoded({ extended: true }));
+
+
 app.get('/', (req, res) => {
     res.send('API is running...');
 });
