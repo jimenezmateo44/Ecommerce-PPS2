@@ -23,7 +23,7 @@ const CartScreen = () => {
     };
 
     const checkoutHandler = () => {
-        navigate('/login?redirect=/envios');
+        navigate('/login?redirect=/shipping');
     }
 
      const keepShoppingHandler = () => {
