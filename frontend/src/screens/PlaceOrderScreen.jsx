@@ -1,8 +1,8 @@
 import { useEffect } from "react";
 import { Link, useNavigate } from 'react-router-dom';
-import { useSelector, useDispatch } from "react-redux";
+import { useSelector, useDispatch } from 'react-redux';
 import { Button, Row, Col, ListGroup, Image, Card } from 'react-bootstrap';
-import { toast } from "react-toastify";
+import { toast } from 'react-toastify';
 import Message from '../components/Message';
 import Loader from '../screens/Loader';
 import { useCreateOrderMutation } from "../slices/ordersApiSlice";
@@ -14,7 +14,7 @@ const PlaceOrderScreen = () => {
     const dispatch = useDispatch();
     const cart = useSelector((state) => state.cart);
 
-   const [createOrder, {isLoading, error}] = useCreateOrderMutation();
+   const [createOrder, { isLoading, error }] = useCreateOrderMutation();
 
     useEffect(() => {
         if (!cart.shippingAddress.address) {
@@ -31,13 +31,13 @@ const PlaceOrderScreen = () => {
                 shippingAddress: cart.shippingAddress,
                 paymentMethod: cart.paymentMethod,
                 itemsPrice: cart.itemsPrice,
-                shippingPrice: cart.shippingPrice,
                 totalPrice: cart.totalPrice,
             }).unwrap();
             dispatch(clearCartItems());
             navigate(`/order/${res._id}`);
         } catch (error) {
-            toast.error(error);
+             const errorMessage = error.data ? error.data.message : 'An error occurred';
+        toast.error(errorMessage);
         }
     };
 
@@ -109,7 +109,7 @@ const PlaceOrderScreen = () => {
                             <Row>
                                 <Col>Envio:</Col>
                                 <Col>
-                                   $0 {'(Sin cargo)'} 
+                                   $0
                                 </Col>
                             </Row>
                         </ListGroup.Item>
@@ -132,11 +132,11 @@ const PlaceOrderScreen = () => {
                                 type='button'
                                 className='btn-block'
                                 disabled={cart.cartItems.length === 0}
-                                onClick={placeOrderHandler}
+                                onClick= {placeOrderHandler}
                                 >
                                     Generar Orden
                             </Button>
-                            { isLoading && <Loader />}
+                            {isLoading && <Loader />}
                         </ListGroup.Item>
                     </ListGroup>
                 </Card>
@@ -147,4 +147,4 @@ const PlaceOrderScreen = () => {
   )
 }
 
-export default PlaceOrderScreen
+export default PlaceOrderScreen;

@@ -1,13 +1,12 @@
 import asyncHandler from '../middleware/asyncHandler.js';
-import orderRoutes from '../routes/orderRoutes.js';
+import Order from '../models/orderModel.js'
 
 //crear una orden
 const addOrderItems = asyncHandler (async (req, res) => {
   const { 
     orderItems,
     shippingAddress,
-    itemsPrice,
-    taxPrice, 
+    itemsPrice, 
     shippingPrice, 
     totalPrice,
   } = req.body;
@@ -19,7 +18,7 @@ const addOrderItems = asyncHandler (async (req, res) => {
       const order = new Order({
         orderItems: orderItems.map((x) => ({
           ...x,
-          product: x._id,
+          producto: x._id,
           _id: undefined
         })),
         user: req.user._id,
@@ -30,9 +29,9 @@ const addOrderItems = asyncHandler (async (req, res) => {
         totalPrice,
       });
 
-      const createOrder = await order.save();
+      const createdOrder = await order.save();
 
-      req.status(201).json(createOrder);
+      req.status(201).json(createdOrder);
   }
 });
 
