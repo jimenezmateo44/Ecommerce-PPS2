@@ -2,10 +2,11 @@ import asyncHandler from '../middleware/asyncHandler.js';
 import Order from '../models/orderModel.js'
 
 //crear una orden
-const addOrderItems = asyncHandler (async (req, res) => {
+const addOrderItems = asyncHandler(async (req, res) => {
   const { 
     orderItems,
     shippingAddress,
+    paymentMethod, 
     itemsPrice, 
     shippingPrice, 
     totalPrice,
@@ -18,8 +19,8 @@ const addOrderItems = asyncHandler (async (req, res) => {
       const order = new Order({
         orderItems: orderItems.map((x) => ({
           ...x,
-          producto: x._id,
-          _id: undefined
+          product: x._id,
+          _id: undefined, 
         })),
         user: req.user._id,
         shippingAddress,
@@ -31,7 +32,7 @@ const addOrderItems = asyncHandler (async (req, res) => {
 
       const createdOrder = await order.save();
 
-      req.status(201).json(createdOrder);
+      res.status(201).json(createdOrder);
   }
 });
 
@@ -42,7 +43,7 @@ const getMyOrders = asyncHandler (async (req, res) => {
   });
 
 //obtener ordenes por id
-const getOrderById = asyncHandler (async (req, res) => {
+const getOrderById = asyncHandler(async (req, res) => {
     const order = await Order.findById(req.params._id).populate('user', 'name email');
 
     if (order) {

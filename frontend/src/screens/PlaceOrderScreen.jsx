@@ -11,7 +11,7 @@ import CheckoutSteps from '../components/CheckoutSteps';
 
 const PlaceOrderScreen = () => {
     const navigate = useNavigate();
-    const dispatch = useDispatch();
+
     const cart = useSelector((state) => state.cart);
 
    const [createOrder, { isLoading, error }] = useCreateOrderMutation();
@@ -24,20 +24,21 @@ const PlaceOrderScreen = () => {
         }
     }, [cart.paymentMethod, cart.shippingAddress.address, navigate]); 
 
+    const dispatch = useDispatch();
     const placeOrderHandler = async () => {
         try {
             const res = await createOrder({
                 orderItems: cart.cartItems,
                 shippingAddress: cart.shippingAddress,
-                paymentMethod: cart.paymentMethod,
+                    paymentMethod: cart.paymentMethod,
                 itemsPrice: cart.itemsPrice,
+                shippingPrice: cart.shippingPrice,
                 totalPrice: cart.totalPrice,
             }).unwrap();
             dispatch(clearCartItems());
             navigate(`/order/${res._id}`);
         } catch (error) {
-             const errorMessage = error.data ? error.data.message : 'An error occurred';
-        toast.error(errorMessage);
+            toast.error(error);
         }
     };
 
@@ -77,7 +78,9 @@ const PlaceOrderScreen = () => {
                                                     fluid rounded />
                                             </Col>
                                             <Col>
-                                                <Link to={`/productos/${item.productos}`}>{item.name}</Link>
+                                                <Link to={`/productos/${item.productos}`}>
+                                                    {item.name}
+                                                </Link>
                                             </Col>
                                             <Col md={4}>
                                                 {item.qty } x ${item.price} = ${item.qty * item.price}
@@ -144,7 +147,7 @@ const PlaceOrderScreen = () => {
         </Row>
     
     </>
-  )
-}
+  );
+};
 
 export default PlaceOrderScreen;
