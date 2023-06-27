@@ -41,16 +41,16 @@ const PaymentScreen = () => {
                         label= 'Mercado Pago o tarjeta de credito'
                         id='MercadoPago'
                         name='paymentMethod'
-                        value='MercadoPago'
+                        value='Mercado Pago'
                         onChange={(e) => setPaymentMethod(e.target.value)}>
                     </Form.Check>
                      <Form.Check
                         type='radio'
                         className='my-2'
                         label= 'Deposito o transferencia bancaria'
-                        id='TransferenciaBancaria'
+                        id='Transferencia bancaria'
                         name='paymentMethod'
-                        value='TransferenciaBancaria'
+                        value='Transferencia bancaria'
                         onChange={(e) => setPaymentMethod(e.target.value)}>
                     </Form.Check>
                 </Col>
