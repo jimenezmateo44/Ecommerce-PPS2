@@ -8,7 +8,7 @@ import userRoutes from './routes/userRoutes.js';
 import orderRoutes from './routes/orderRoutes.js';
 
 import { notFound, errorHandler } from './middleware/errorMiddleware.js';
-import { connect } from 'mongoose';
+
 
 const port = process.env.PORT || 5000;
 
