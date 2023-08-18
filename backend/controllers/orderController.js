@@ -1,5 +1,5 @@
 import asyncHandler from '../middleware/asyncHandler.js';
-import Order from '../models/orderModel.js'
+import Order from '../models/orderModel.js';
 
 //crear una orden
 const addOrderItems = asyncHandler(async (req, res) => {
