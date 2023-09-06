@@ -1,11 +1,11 @@
-import {Badge,  Navbar, Nav, Container, Button ,Form, NavDropdown } from 'react-bootstrap';
+import {Badge,  Navbar, Nav, Container, Form, NavDropdown } from 'react-bootstrap';
 import { FaShoppingCart, FaUser, FaSearch } from 'react-icons/fa';
 import logo from "../assets/logo.png";
 import '../assets/styles/header_style.css';
 import { useNavigate } from 'react-router-dom';
 import { LinkContainer } from 'react-router-bootstrap';
 import { useSelector, useDispatch } from 'react-redux';
-import { useLoginMutation, useLogoutMutation } from '../slices/usersApiSlice';
+import { useLogoutMutation } from '../slices/usersApiSlice';
 import { logout } from '../slices/authSlice';
 
 const Header = () => {
@@ -68,7 +68,19 @@ const Header = () => {
                                 <Nav.Link className="navbar-item"><FaUser/> Ingresa</Nav.Link>
                             </LinkContainer>
                         )}
-                        
+                        {userInfo && userInfo.isAdmin && (
+                            <NavDropdown title='Admin' id='adminMenu'>
+                                <LinkContainer to='/admin/productlist'>
+                                    <NavDropdown.Item>Productos</NavDropdown.Item>
+                                </LinkContainer>
+                                <LinkContainer to='/admin/userlist'>
+                                    <NavDropdown.Item>Usuarios</NavDropdown.Item>
+                                </LinkContainer>
+                                <LinkContainer to='/admin/orderlist'>
+                                    <NavDropdown.Item>Ordenes</NavDropdown.Item>
+                                </LinkContainer>
+                            </NavDropdown>
+                        )}
                         
                         <Form className="d-flex">
                             <Form.Control

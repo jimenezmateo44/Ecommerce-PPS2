@@ -18,4 +18,17 @@ const getProductById = asyncHandler (async (req, res) => {
     }
 });
 
-export { getProducts, getProductById };
+const createProduct = asyncHandler(async (req, res) => {
+    const product = new Producto({
+        name: 'Producto nuevo',
+        price: 0,
+        user: req.user._id,
+        image: '/images/sample.jpg',
+        brand: 'Categoria',
+        countInStock: 0,
+        numReviews: 0,
+        description: 'Descripcion'
+    })
+});
+
+export { getProducts, getProductById, createProduct};
