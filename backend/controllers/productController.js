@@ -59,4 +59,16 @@ const createProduct = asyncHandler(async (req, res) => {
     }
   });
 
-export { getProducts, getProductById, createProduct, updateProduct};
+  const deleteProduct = asyncHandler(async (req, res) => {
+    const producto = await Producto.findById(req.params.id);
+
+    if (producto) {
+        await Producto.deleteOne({_id: producto._id});
+        res.status(200).json({ message: 'Producto eliminado'});
+    } else {
+        res.status(404);
+        throw new Error('No encontrado');
+    }
+  });
+
+export { getProducts, getProductById, createProduct, updateProduct, deleteProduct};

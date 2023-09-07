@@ -26,7 +26,8 @@
 .imgProduct {
     margin-left: 3.5rem;
     margin-top: 2rem;
-    height: 80%
+    min-height: 70%;
+    max-height: 70%;
 }
 
 .imgProduct:hover {
