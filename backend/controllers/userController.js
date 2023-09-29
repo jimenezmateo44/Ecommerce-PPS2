@@ -14,7 +14,7 @@ const loginUser = asyncHandler (async (req, res) => {
         de la base de datos) y la contrasena insertada */
 
     if(user && (await user.matchPassword(password))) {
-        generateToken(res, user._id);
+        generateToken(res, user._id); //Se genera el token de autorizacion 
 
         res.status(200).json({
             _id: user._id,
