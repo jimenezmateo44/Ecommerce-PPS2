@@ -33,3 +33,17 @@
 .imgProduct:hover {
     cursor: pointer;
 }
+
+.imagenFija {
+    object-fit: cover;
+    height: 400px;
+}
+
+@media (min-width:320px) and (max-width:500px){
+
+    .tarjeta-fija {
+        width: 80%;
+        margin: auto;
+    }
+    
+}
