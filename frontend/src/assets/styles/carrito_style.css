@@ -1,0 +1,7 @@
+@media (min-width:320px) and (max-width:800px) {
+    .imagenCarrito {
+        height: 15rem;
+        margin-left: 25%;
+        margin-bottom: 10px;
+    }
+}

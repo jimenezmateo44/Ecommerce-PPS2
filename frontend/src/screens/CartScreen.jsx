@@ -4,6 +4,7 @@ import { Row, Col, ListGroup, Image, Form, Button, Card } from 'react-bootstrap'
 import { FaTrash } from 'react-icons/fa';
 import Message from '../components/Message';
 import { addToCart, removeFromCart } from '../slices/cartSlice';
+import carrito_style from '../assets/styles/carrito_style.css';
 
 //Este componente nos muestra detalles de carrito
 
@@ -44,7 +45,7 @@ const CartScreen = () => {
                         <ListGroup.Item key= {item._id}>
                             <Row>
                                 <Col md={2}> {/*Mostramos la imagen*/}
-                                    <Image src={item.image} alt={item.name} fluid rounded />
+                                    <Image src={item.image} alt={item.name} fluid rounded className='imagenCarrito' />
                                 </Col>
                                 <Col md={3}> {/*Mostramos el nombre del producto*/}
                                     <Link to={`/productos/${item._id}`} className="link-productos nombreProductos">{item.name}</Link>
