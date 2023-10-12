@@ -48,11 +48,6 @@ const ProductScreen = () => {
                   <ListGroup.Item>
                     <h3>{productos.name}</h3>
                   </ListGroup.Item>
-
-                  <ListGroup.Item>
-                    <Rating value={productos.rating} text={`${productos.numReviews} reviews`}/>
-                  </ListGroup.Item>
-
                   <ListGroup.Item>
                     <p>Descripcion:</p>
                     {productos.description}

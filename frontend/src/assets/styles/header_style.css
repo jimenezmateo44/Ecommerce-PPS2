@@ -32,3 +32,13 @@
     transition: 1s ease;
     transform: translateY(-3px);
 }
+
+.subHeader {
+    background-color: #323333;
+    color: white;
+    height: 40px;
+}
+
+.btnCategoryHeader {
+    background-color: #1B1B1B;  
+}

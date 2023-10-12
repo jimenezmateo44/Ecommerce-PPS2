@@ -36,9 +36,13 @@
 
 .imagenFija {
     object-fit: cover;
+    border-radius: 0px;
     height: 400px;
 }
 
+.tarjeta-fija {
+    border: none;
+}
 @media (min-width:320px) and (max-width:500px){
 
     .tarjeta-fija {

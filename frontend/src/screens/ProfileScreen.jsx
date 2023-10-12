@@ -103,7 +103,7 @@ const ProfileScreen = () => {
           {loadingUpdateProfile && <Loader />}
         </Form>
     </Col>
-    <Col md={9}>
+    {/* <Col md={9}>
         <h2>Mis ordenes</h2>
         { isLoading ? (
             <Loader />
@@ -155,7 +155,7 @@ const ProfileScreen = () => {
                 </tbody>
             </Table>
         )}
-    </Col>
+    </Col> */}
   </Row>
 );
 };

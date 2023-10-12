@@ -6,7 +6,7 @@ import Rating from './Rating';
 
 const Producto = ({productos}) => {
   return (
-    <Card className="my-3 p-3 tarjeta-fija">
+    <Card className="my-3 tarjeta-fija">
         <Link to={`/productos/${productos._id}`}>
             <Card.Img src={productos.image} variant="top" className='imagenFija'/>
         </Link>
@@ -17,9 +17,9 @@ const Producto = ({productos}) => {
                 </Card.Title>
             </Link>
 
-            <Card.Text as="div">
+            {/* <Card.Text as="div">
                 <Rating value={productos.rating} text={`${productos.numReviews} reviews`}/>
-            </Card.Text>
+            </Card.Text>  */}
 
             <Card.Text as="h3" className='h3_precio d-flex justify-content-center mt-4'>
                 ${productos.price}

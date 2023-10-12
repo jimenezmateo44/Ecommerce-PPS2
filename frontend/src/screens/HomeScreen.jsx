@@ -16,7 +16,8 @@ const HomeScreen = () => {
   ) : (
   
   <>
-    <h1 className='text-center mt-5'>Ultimos lanzamientos</h1>
+    <h1 className='text-center mt-5'>NUESTROS PRODUCTOS!</h1>
+    <hr></hr>
    <Row>
      {productos.map((productos) => (
         <Col key={productos._id} sm={12} md={6} lg={4} xl={3}>

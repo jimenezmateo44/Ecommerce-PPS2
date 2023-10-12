@@ -43,7 +43,7 @@ const LoginScreen = () => {
 
   return (
     <FormContainer>
-        <h1>Ingresa</h1>
+        <h1 className="mt-5">Ingresa</h1>
 
         <Form onSubmit={submitHandler}>
             <Form.Group controlId="email" className="my-3">

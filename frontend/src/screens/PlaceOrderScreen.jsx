@@ -14,33 +14,33 @@ const PlaceOrderScreen = () => {
 
     const cart = useSelector((state) => state.cart);
 
-   const [createOrder, { isLoading, error }] = useCreateOrderMutation();
+//    const [createOrder, { isLoading, error }] = useCreateOrderMutation();
 
-    useEffect(() => {
-        if (!cart.shippingAddress.address) {
-            navigate('/shipping');
-        } else if (!cart.paymentMethod) {
-            navigate('/payment');
-        }
-    }, [cart.paymentMethod, cart.shippingAddress.address, navigate]); 
+//     useEffect(() => {
+//         if (!cart.shippingAddress.address) {
+//             navigate('/shipping');
+//         } else if (!cart.paymentMethod) {
+//             navigate('/payment');
+//         }
+//     }, [cart.paymentMethod, cart.shippingAddress.address, navigate]); 
 
-    const dispatch = useDispatch();
-    const placeOrderHandler = async () => {
-        try {
-            const res = await createOrder({
-                orderItems: cart.cartItems,
-                shippingAddress: cart.shippingAddress,
-                    paymentMethod: cart.paymentMethod,
-                itemsPrice: cart.itemsPrice,
-                shippingPrice: cart.shippingPrice,
-                totalPrice: cart.totalPrice,
-            }).unwrap();
-            dispatch(clearCartItems());
-            navigate(`/order/${res._id}`);
-        } catch (error) {
-            toast.error(error);
-        }
-    };
+//     const dispatch = useDispatch();
+//     const placeOrderHandler = async () => {
+//         try {
+//             const res = await createOrder({
+//                 orderItems: cart.cartItems,
+//                 shippingAddress: cart.shippingAddress,
+//                     paymentMethod: cart.paymentMethod,
+//                 itemsPrice: cart.itemsPrice,
+//                 shippingPrice: cart.shippingPrice,
+//                 totalPrice: cart.totalPrice,
+//             }).unwrap();
+//             dispatch(clearCartItems());
+//             navigate(`/order/${res._id}`);
+//         } catch (error) {
+//             toast.error(error);
+//         }
+//     };
 
   return (
     <>
@@ -126,20 +126,20 @@ const PlaceOrderScreen = () => {
                             </Row>
                         </ListGroup.Item>
 
-                        <ListGroup.Item>
+                        {/* <ListGroup.Item>
                             { error && <Message variant='danger'>{error}</Message>}
-                        </ListGroup.Item>
+                        </ListGroup.Item> */}
 
                         <ListGroup.Item>
                             <Button
                                 type='button'
                                 className='btn-block'
                                 disabled={cart.cartItems.length === 0}
-                                onClick= {placeOrderHandler}
+                                // s 
                                 >
                                     Generar Orden
                             </Button>
-                            {isLoading && <Loader />}
+                            {/* {isLoading && <Loader />} */}
                         </ListGroup.Item>
                     </ListGroup>
                 </Card>

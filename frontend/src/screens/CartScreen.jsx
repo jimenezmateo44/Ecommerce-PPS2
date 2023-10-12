@@ -4,7 +4,6 @@ import { Row, Col, ListGroup, Image, Form, Button, Card } from 'react-bootstrap'
 import { FaTrash } from 'react-icons/fa';
 import Message from '../components/Message';
 import { addToCart, removeFromCart } from '../slices/cartSlice';
-import carrito_style from '../assets/styles/carrito_style.css';
 
 //Este componente nos muestra detalles de carrito
 
