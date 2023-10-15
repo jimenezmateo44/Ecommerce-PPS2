@@ -23,7 +23,7 @@ const Footer = () => {
         </div>
       </div>
       <div className="text-center mt-5">
-        <p>&copy; {currentYear} Mateo Jimenez - Todos los derechos reservados</p>
+        <p className='text-center'>&copy; {currentYear} Mateo Jimenez - Todos los derechos reservados</p>
       </div>
     </footer>
   )

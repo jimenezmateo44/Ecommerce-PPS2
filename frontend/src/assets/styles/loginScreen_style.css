@@ -1,0 +1,13 @@
+.btnSubmit {
+    transition: .5s ease-in-out;
+    border: 1px solid #1f1f1f;
+    background-color: #fafafa;
+    color: #1f1f1f;
+}
+
+.btnSubmit:hover {
+    transition: .5s ease-in-out;
+    border: none;
+    background-color: #1f1f1f;
+    color: #fafafa;
+}

@@ -4,6 +4,7 @@ import { Row, Col, ListGroup, Image, Form, Button, Card } from 'react-bootstrap'
 import { FaTrash } from 'react-icons/fa';
 import Message from '../components/Message';
 import { addToCart, removeFromCart } from '../slices/cartSlice';
+import '../assets/styles/carrito_style.css'
 
 //Este componente nos muestra detalles de carrito
 
@@ -74,7 +75,7 @@ const CartScreen = () => {
                     ))}
                 <ListGroup.Item className='m-3 d-flex justify-content-end'>
                         <Button type='button' 
-                                className='btn-block' 
+                                className='btn-block btnCarrito' 
                                 onClick={ keepShoppingHandler }
                         >
                             Seguir comprando
@@ -94,7 +95,7 @@ const CartScreen = () => {
                     </ListGroup.Item>
                     <ListGroup.Item className='d-flex justify-content-center m-1'>
                         <Button type='button' 
-                                className='btn-block' 
+                                className='btn-block btnCarrito' 
                                 disabled={ cartItems.length === 0 }
                                 onClick={ checkoutHandler }
                         >

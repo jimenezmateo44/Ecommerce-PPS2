@@ -1,0 +1,32 @@
+p {
+    margin-top: 2rem;
+    margin-bottom: 2rem;
+    text-align: justify;
+}
+
+.curarImg {
+    display: block;
+    margin: 0 auto;
+    text-align: center;
+    height: 50vw;
+}
+
+.logoContactForm {
+    display: block;
+    margin: 0 auto;
+    text-align: center;
+}
+
+.btnContactForm {
+    transition: .5s ease;
+    background-color: #fafafa;
+    border: 1px solid #1f1f1f;
+    color: #1f1f1f;
+}
+
+.btnContactForm:hover {
+    transition: .5s ease;
+    background-color: #1f1f1f;
+    color: #fafafa;
+    border: none;
+}

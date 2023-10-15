@@ -42,3 +42,13 @@
 .btnCategoryHeader {
     background-color: #1B1B1B;  
 }
+
+.linkBtn {
+    text-decoration: none;
+    color: #F8F8FF;
+}
+
+.linkBtn:hover {
+    transition: .5s ease;
+    color: orangered;
+}

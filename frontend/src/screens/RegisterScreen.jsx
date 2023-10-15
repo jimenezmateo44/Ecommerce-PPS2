@@ -7,6 +7,7 @@ import Loader from "./Loader";
 import { useRegisterMutation } from "../slices/usersApiSlice";
 import { setCredentials } from "../slices/authSlice";
 import { toast } from "react-toastify";
+import '../assets/styles/loginScreen_style.css'
 
 
 const RegisterScreen = () => {
@@ -95,8 +96,8 @@ const RegisterScreen = () => {
                 ></Form.Control>
             </Form.Group>
 
-            <Button type="submit" variant="primary" className="mt-2" disabled= { isLoading }>
-                Registar
+            <Button type="submit" variant="primary" className="mt-2 btnSubmit" disabled= { isLoading }>
+                Registrar
             </Button>
 
             { isLoading  && <Loader /> } 
@@ -104,7 +105,7 @@ const RegisterScreen = () => {
 
         <Row className="py-3">
             <Col>
-                ¿Ya tenés una cuenta? <Link to={ redirect ? `/register?redirect=${redirect}` : '/login'}>Inicia sesión</Link>
+                ¿Ya tenés una cuenta? <Link to={ redirect ? `/register?redirect=${redirect}` : '/login'} className="text-dark">Inicia sesión</Link>
             </Col>
         </Row>
     

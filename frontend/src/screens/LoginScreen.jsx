@@ -7,6 +7,7 @@ import Loader from "./Loader";
 import { useLoginMutation } from "../slices/usersApiSlice";
 import { setCredentials } from "../slices/authSlice";
 import { toast } from "react-toastify";
+import '../assets/styles/loginScreen_style.css'
 
 
 const LoginScreen = () => {
@@ -68,7 +69,7 @@ const LoginScreen = () => {
                 ></Form.Control>
             </Form.Group>
 
-            <Button type="submit" variant="primary" className="mt-2" disabled= { isLoading }>
+            <Button type="submit" variant="primary" className="mt-2 btnSubmit" disabled= { isLoading }>
                 Ingresar
             </Button>
 
@@ -77,7 +78,7 @@ const LoginScreen = () => {
 
         <Row className="py-3">
             <Col>
-                ¿No tenés cuenta? <Link to={ redirect ? `/register?redirect=${redirect}` : '/register'}>Registrate</Link>
+                ¿No tenés cuenta? <Link to={ redirect ? `/register?redirect=${redirect}` : '/register'} className="text-dark">Registrate</Link>
             </Col>
         </Row>
     
