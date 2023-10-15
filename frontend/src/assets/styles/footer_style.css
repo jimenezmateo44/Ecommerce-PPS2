@@ -7,3 +7,20 @@ footer {
     color: white;
     margin: 1.5em;
 }
+
+.dataFiscal {
+    height: 5rem;
+}
+
+.btnNews {
+    border: none;
+    margin-left: 2px;
+}
+
+.emailForm {
+    border: 1px solid #343d46;
+}
+
+.copyright {
+    margin-bottom: 0;
+}
