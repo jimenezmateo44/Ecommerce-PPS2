@@ -2,7 +2,6 @@ import React from 'react';
 import '../assets/styles/producto_style.css';
 import { Card } from 'react-bootstrap';
 import { Link } from 'react-router-dom';
-import Rating from './Rating';
 
 const Producto = ({productos}) => {
   return (
@@ -17,12 +16,11 @@ const Producto = ({productos}) => {
                 </Card.Title>
             </Link>
 
-            {/* <Card.Text as="div">
-                <Rating value={productos.rating} text={`${productos.numReviews} reviews`}/>
-            </Card.Text>  */}
-
-            <Card.Text as="h3" className='h3_precio d-flex justify-content-center mt-4'>
+            <Card.Text as="h3" className='h3_precio d-flex justify-content-center'>
                 ${productos.price}
+            </Card.Text>
+            <Card.Text as="h4" className='cuotas d-flex justify-content-center'>
+                3 cuotas sin interes de ${Math.floor(productos.price/3)}
             </Card.Text>
 
         </Card.Body>
