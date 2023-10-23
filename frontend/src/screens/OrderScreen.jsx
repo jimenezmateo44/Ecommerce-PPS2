@@ -2,15 +2,47 @@ import { Link, useParams } from 'react-router-dom';
 import { Row, Col, ListGroup, Image, Form, Button, Card } from 'react-bootstrap';
 import Message from '../components/Message';
 import Loader from './Loader';
-import { useGetOrderDetailsQuery } from '../slices/ordersApiSlice'; 
-
+import { useGetOrderDetailsQuery, useDeliverOrderMutation, usePayOrderMutation} from '../slices/ordersApiSlice'; 
+import { toast } from 'react-toastify';
+import { useSelector } from 'react-redux';
 
 const OrderScreen = () => {
   const { id: orderId } = useParams();
 
+  const [deliverOrder, { isLoading: loadingDeliver }] = useDeliverOrderMutation();
+
+  const deliverOrderHandler = async () => {
+    try {
+      await deliverOrder(orderId);
+      refetch();
+      toast.success('Orden enviada');
+    } catch (err) {
+      toast.error(err?.data?.message || err.message);
+    }
+  }
+
+  const [payOrder, { isLoading: loadingPay }] = usePayOrderMutation();
+
+  
+  const setPaidHandler = async () => {
+    try {
+      // Llama a la mutación para marcar la orden como pagada
+      const response = await payOrder({ orderId });
+        refetch();
+      if (response.data && response.data.payOrder) {
+        refetch(); // Vuelve a cargar los datos de la orden
+        toast.success('Orden pagada');
+      } 
+    } catch (err) {
+      toast.error(err?.data?.message || err.message);
+    }
+  };
+
+  const { userInfo } = useSelector((state) => state.auth);
+
   const {
     data: order,
-    efetch,
+    refetch,
     isLoading,
     error
   } = useGetOrderDetailsQuery(orderId);
@@ -95,7 +127,7 @@ const OrderScreen = () => {
                   <ListGroup.Item>
                     <Row>
                       <Col>Productos</Col>
-                      <Col>${order.itemsPrice}</Col>
+                      <Col>${order.itemsPrice * 10}</Col>
                     </Row>
 
                     <Row>
@@ -105,11 +137,34 @@ const OrderScreen = () => {
 
                     <Row>
                       <Col>Total</Col>
-                      <Col>${order.totalPrice}</Col>
+                      <Col>${order.totalPrice * 10}</Col>
                     </Row>
                   </ListGroup.Item>
+
+                  { loadingPay && <Loader /> }
+                  { userInfo && userInfo.isAdmin && !order.isPaid &&(
+                     <ListGroup.Item>
+                     <Button type='button' className='btn btn-block' onClick={setPaidHandler}>
+                       Marcar como pago
+                     </Button>
+                   </ListGroup.Item>
+                  )}
+
+                  { loadingDeliver && <Loader /> }
+                  { userInfo && userInfo.isAdmin && order.isPaid && !order.isDelivered && (
+                    <ListGroup.Item>
+                      <Button type='button' className='btn btn-block' onClick={deliverOrderHandler}>
+                        Marcar como enviado
+                      </Button>
+                    </ListGroup.Item>
+                  )}
                 </ListGroup>
           </Card>
+
+          <ListGroup>
+            <p className='mt-4 p-2 fs-5'>Enviar comprobante de pago a dosgauchitos@gmail.com o al celular +542932578382
+               dentro de las 48 horas de realizada la orden</p>
+          </ListGroup>
         </Col>
       </Row>
     </>
